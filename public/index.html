@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>My Header</h1>
+
+    <p>Laititude:<span id="Latitude"></span>
+        <br>
+        Longitude:<span id="Longitude"></span>
+    </p>
+    <script>
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(async position => {
+                const lat = position.coords.latitude
+                const long = position.coords.longitude
+                document.getElementById('Latitude').textContent = lat;
+                document.getElementById('Longitude').textContent = long;
+
+                const data = { lat, long };
+                const options = {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                }
+                const response = await fetch('/api', options);
+                await console.log(response.json());
+            });
+        }
+        else { console.log('geolocation Not available') };
+
+        //const ram = navigator.deviceMemory;
+        //const processors = navigator.hardwareConcurrency;
+        //const browser = navigator.vendor;
+
+    </script>
+</body>
+
+</html>

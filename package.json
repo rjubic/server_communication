@@ -1,7 +1,7 @@
 {
   "name": "server_communication",
   "version": "1.0.0",
-  "description": "This is just to test node server communication methods.",
+  "description": "Basic node server communication testing.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
